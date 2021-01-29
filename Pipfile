@@ -11,6 +11,9 @@ flask = "*"
 flask-sqlalchemy = "*"
 python-dotenv = "*"
 psycopg2-binary = "*"
+jupyter = "*"
+notebook = "*"
+pandas = "*"
 
 [dev-packages]
 
