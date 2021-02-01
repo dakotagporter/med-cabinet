@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MedCabinet - Home</title>
+        <link rel="stylesheet" href="https://unpkg.com/picnic"/>
+    </head>
+    <body>
+        <nav>
+            <a href="/" class="brand"><span>MedCabinet!</span></a>
+            <input id="bmenub" type="checkbox" class="show">
+            <label for="bmenub" class="burger pseudo button">Menu</label>
+            <div class="menu">
+                <a href="/about" class="button error">About</a>
+              </div>
+        </nav>
+        <article class="flex two" style="padding: 3em 1em;">
+            <div>
+                <h2>Description</h2>
+                <form action="/predict" method="post">
+                  <input type="text" name="description" placeholder="Description">
+                  <input type="submit" value="Predict">
+                </form>
+              </div>
+            </article>
+        </article>
+    </body>
+</html>
