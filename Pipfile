@@ -14,6 +14,8 @@ psycopg2-binary = "*"
 jupyter = "*"
 notebook = "*"
 pandas = "*"
+spacy = "*"
+scikit-learn = "*"
 
 [dev-packages]
 
