@@ -36,6 +36,11 @@ def search_strains(strain):
 
     return ERROR
 
+def find_index(index):
+    cannabis = load_json()
+
+    return parse_values(cannabis[index])
+
 
 def transfrom_query(query):
     """Transform user query into correct format

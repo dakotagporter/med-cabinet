@@ -17,5 +17,10 @@
                 <a href="/about" class="button normal">About</a>
               </div>
         </nav>
+        <div>
+            {% for i in top_10 %}
+                <p>{{ i }}</p>
+            {% endfor %}
+        </div>
     </body>
 </html>
