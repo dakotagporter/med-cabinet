@@ -38,70 +38,14 @@
             </div>
             <div>
                 <form action="/prediction" method="POST">
-                    <h2>Effects</h2>
-                    <label for="effects">Choose Effects:</label><br>
-                    
-        
-                    <label>
-                        <input type="checkbox" name="effects" value="creative">
-                        <span class="checkable">Creative</span>
-                    </label>
-                
-                    <label>
-                        <input type="checkbox" name="effects" value="energetic">
-                        <span class="checkable">Energetic</span>
-                    </label>
-                
-                    <label>
-                        <input type="checkbox" name="effects" value="euphoric">
-                        <span class="checkable">Euphoric</span><br>
-                    </label>
-
-                    <label>
-                        <input type="checkbox" name="effects" value="focused">
-                        <span class="checkable">Focused</span>
-                    </label>
-                
-                    <label>
-                        <input type="checkbox" name="effects" value="giggly">
-                        <span class="checkable">Giggly</span>
-                    </label>
-                
-                    <label>
-                        <input type="checkbox" name="effects" value="happy">
-                        <span class="checkable">Happy</span><br>
-                    </label>
-                
-                    <label>
-                        <input type="checkbox" name="effects" value="hungry">
-                        <span class="checkable">Hungry</span>
-                    </label>
-                
-                    <label>
-                        <input type="checkbox" name="effects" value="relaxed">
-                        <span class="checkable">Relaxed</span>
-                    </label>
-                
-                    <label>
-                        <input type="checkbox" name="effects" value="sleepy">
-                        <span class="checkable">Sleepy</span><br>
-                    </label>
-                
-                    <label>
-                        <input type="checkbox" name="effects" value="talkative">
-                        <span class="checkable">Talkative</span>
-                    </label>
-                
-                    <label>
-                        <input type="checkbox" name="effects" value="tingly">
-                        <span class="checkable">Tingly</span>
-                    </label>
-                
-                    <label>
-                        <input type="checkbox" name="effects" value="uplifted">
-                        <span class="checkable">Uplifted</span>
-                    </label>
-
+                <h2>Effects</h2>
+                <label for="effects">Choose Effects:</label><br>
+                {% for effect in effects %}
+                <label>
+                    <input type="checkbox" name="effects" value="{{ effect }}">
+                    <span class="checkable">{{ effect }}</span><br>
+                </label>
+                {% endfor %}
                 <h2>Type</h2>
                 <label for="type">Choose a Type:</label>
 

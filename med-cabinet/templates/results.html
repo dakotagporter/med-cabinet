@@ -17,5 +17,10 @@
                 <a href="/about" class="button normal">About</a>
               </div>
         </nav>
+        <div style="padding: 3em 1em;">
+            {% for value in values %}
+                <p>{{ value }}</p>
+            {% endfor %}
+        </div>
     </body>
 </html>

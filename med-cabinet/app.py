@@ -8,10 +8,9 @@ def create_app():
 
     @app.route('/')
     def index():
-        return render_template('index.html')
+        return render_template('index.html', effects=EFFECTS)
 
 
-    
     @app.route('/prediction', methods=['POST'])
     def prediction():
         print(request.form.getlist('effects'))
@@ -22,7 +21,8 @@ def create_app():
     
     @app.route('/results', methods=['POST'])
     def results(): 
-        return find_strain(request.form.get('search'))
+        values = search_strains(request.form.get('search'))
+        return render_template('results.html', values=values)
 
 
     @app.route('/search')
