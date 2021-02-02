@@ -6,22 +6,120 @@
     </head>
     <body>
         <nav>
-            <a href="/" class="brand"><span>MedCabinet!</span></a>
+            <a href="/" class="brand"><span>
+                <img src="static/images/weed-leaf.png" alt="Cannabis Leaf" width="30" height="30">
+                MedCabinet!
+            </span></a>
             <input id="bmenub" type="checkbox" class="show">
             <label for="bmenub" class="burger pseudo button">Menu</label>
             <div class="menu">
-                <a href="/about" class="button error">About</a>
+                <a href="/search" class="button normal">Search</a>
+                <a href="/about" class="button normal">About</a>
               </div>
         </nav>
         <article class="flex two" style="padding: 3em 1em;">
             <div>
+                <h2>Instructions</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, 
+                    consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt 
+                    ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud 
+                    exercitation ullamco laboris nisi ut 
+                    aliquip ex ea commodo consequat. 
+                    Duis aute irure dolor in reprehenderit 
+                    in voluptate velit esse cillum dolore 
+                    eu fugiat nulla pariatur. 
+                </p>
+                <div style="text-align: left">
+                    <img src="static/images/rx.jpeg" alt="RX Bottle" width="300" height="300">
+                </div>
+            </div>
+            <div>
+                <form action="/prediction" method="POST">
+                    <h2>Effects</h2>
+                    <label for="effects">Choose Effects:</label><br>
+                    
+        
+                    <label>
+                        <input type="checkbox" name="effects" value="creative">
+                        <span class="checkable">Creative</span>
+                    </label>
+                
+                    <label>
+                        <input type="checkbox" name="effects" value="energetic">
+                        <span class="checkable">Energetic</span>
+                    </label>
+                
+                    <label>
+                        <input type="checkbox" name="effects" value="euphoric">
+                        <span class="checkable">Euphoric</span><br>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="effects" value="focused">
+                        <span class="checkable">Focused</span>
+                    </label>
+                
+                    <label>
+                        <input type="checkbox" name="effects" value="giggly">
+                        <span class="checkable">Giggly</span>
+                    </label>
+                
+                    <label>
+                        <input type="checkbox" name="effects" value="happy">
+                        <span class="checkable">Happy</span><br>
+                    </label>
+                
+                    <label>
+                        <input type="checkbox" name="effects" value="hungry">
+                        <span class="checkable">Hungry</span>
+                    </label>
+                
+                    <label>
+                        <input type="checkbox" name="effects" value="relaxed">
+                        <span class="checkable">Relaxed</span>
+                    </label>
+                
+                    <label>
+                        <input type="checkbox" name="effects" value="sleepy">
+                        <span class="checkable">Sleepy</span><br>
+                    </label>
+                
+                    <label>
+                        <input type="checkbox" name="effects" value="talkative">
+                        <span class="checkable">Talkative</span>
+                    </label>
+                
+                    <label>
+                        <input type="checkbox" name="effects" value="tingly">
+                        <span class="checkable">Tingly</span>
+                    </label>
+                
+                    <label>
+                        <input type="checkbox" name="effects" value="uplifted">
+                        <span class="checkable">Uplifted</span>
+                    </label>
+
+                <h2>Type</h2>
+                <label for="type">Choose a Type:</label>
+
+                <select name="type" id="type">
+                <option value="none" selected disabled hidden> 
+                    Select an Option 
+                </option> 
+                    <option value="Indica">Indica</option>
+                    <option value="Sativa">Sativa</option>
+                    <option value="Hybrid">Hybrid</option>
+                </select>
+
                 <h2>Description</h2>
-                <form action="/predict" method="post">
-                  <input type="text" name="description" placeholder="Description">
-                  <input type="submit" value="Predict">
-                </form>
-              </div>
-            </article>
+                <label for="description">Enter a Description:</label> 
+                <textarea name="description" placeholder="Optional" rows="3"></textarea>
+                <input type="submit" class="button success" value="Predict">
+            </form>
+            </div>
         </article>
     </body>
 </html>

@@ -19,3 +19,5 @@ def find_strain(strain):
             if value == strain:
                 return cannabis[index]
         index += 1
+
+    return 'Not Found'

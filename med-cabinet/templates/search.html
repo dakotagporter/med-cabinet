@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>MedCabinet - About</title>
+        <title>MedCabinet - Search</title>
         <link rel="stylesheet" href="https://unpkg.com/picnic"/>
     </head>
     <body>
@@ -17,5 +17,12 @@
                 <a href="/about" class="button normal">About</a>
               </div>
         </nav>
+        <div class="flex demo" style="padding: 3em 1em;">
+            <form action="/results" method="POST">
+                <label for="search">Search Strains:</label>
+                <input type="text" name="search">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
     </body>
 </html>
