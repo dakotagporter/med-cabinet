@@ -1,10 +1,8 @@
 import json
+import pickle
 
 
-EFFECTS = ['Creative', 'Energetic', 'Euphoric',
-           'Focused', 'Giggly', 'Happy',
-           'Hungry', 'Relaxed', 'Sleepy',
-           'Talkative', 'Tingly', 'Uplifted']
+EFFECTS = pickle.load(open('med-cabinet/static/data/effects_list.pkl', 'rb'))
 
 ERROR = """Error: Strain Not Found.
            Please Try Again!"""
