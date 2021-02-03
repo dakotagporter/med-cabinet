@@ -46,6 +46,7 @@ def find_effects(effects, strain_type):
 
     strains = []
     for i in cannabis:
+        # TODO: Select results with minimum of 2 given effects
         if (all(elem in i['Effects'] for elem in effects) and
                 strain_type == i['Type']):
             strains.append(i)

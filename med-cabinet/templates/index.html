@@ -21,23 +21,23 @@
             <div>
                 <h2>Instructions</h2>
                 <p>
-                    Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt 
-                    ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud 
-                    exercitation ullamco laboris nisi ut 
-                    aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit 
-                    in voluptate velit esse cillum dolore 
-                    eu fugiat nulla pariatur. 
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit
+                    in voluptate velit esse cillum dolore
+                    eu fugiat nulla pariatur.
                 </p>
                 <div style="text-align: left">
                     <img src="static/images/rx.jpeg" alt="RX Bottle" width="300" height="300">
                 </div>
             </div>
             <div>
-                <form action="/prediction" method="POST">
+            <form action="/prediction" method="POST">
                 <h2>Effects</h2>
                 <label for="effects">Choose Effects:</label><br>
                 {% for effect in effects %}
@@ -49,15 +49,15 @@
                 <h2>Type</h2>
                 <label for="type">Choose a Type:</label>
                 <select name="type" id="type">
-                <option value="none" selected disabled hidden> 
-                    Select an Option 
+                <option value="none" selected disabled hidden>
+                    Select an Option
                 </option> 
                     <option value="indica">Indica</option>
                     <option value="sativa">Sativa</option>
                     <option value="hybrid">Hybrid</option>
                 </select>
                 <h2>Description</h2>
-                <label for="description">Enter a Description:</label> 
+                <label for="description">Enter a Description:</label>
                 <textarea name="description" placeholder="Optional" rows="3"></textarea>
                 <input type="submit" class="button success" value="Predict">
             </form>
