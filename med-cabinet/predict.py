@@ -1,15 +1,19 @@
+import dill
 import pickle
-import spacy
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.neighbors import NearestNeighbors
-
-vectorizer = pickle.load(open('../vectorizer.pkl', 'rb'))
-model = pickle.load(open('../model.pkl', 'rb'))
+# import spacy
+# from sklearn.feature_extraction.text import TfidfVectorizer
+# from sklearn.neighbors import NearestNeighbors
 
 
-def preprocessor(doc):
+def processor(doc):
     doc = nlp(doc)
+
     return " ".join([token.lemma_.lower() for token in doc if not token.is_stop and not token.is_punct])
+
+
+ 
+vectorizer = pickle.load(open('vectorizer.pkl', 'rb'))
+model = pickle.load(open('model.pkl', 'rb'))
 
 
 def vectorize(text):

@@ -16,6 +16,8 @@ notebook = "*"
 pandas = "*"
 spacy = "*"
 scikit-learn = "*"
+cloudpickle = "*"
+dill = "*"
 
 [dev-packages]
 
