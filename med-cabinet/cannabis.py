@@ -2,7 +2,7 @@ import json
 import pickle
 
 
-EFFECTS = pickle.load(open('med-cabinet/static/data/effects_list.pkl', 'rb'))
+EFFECTS = pickle.load(open('./static/data/effects_list.pkl', 'rb'))
 
 ERROR = """Error: Strain Not Found.
            Please Try Again!"""
@@ -12,7 +12,7 @@ KEYS = ['Strain', 'Type', 'Rating', 'Effects', 'Flavor', 'Description']
 
 def load_json():
     """Loads .json file into backend"""
-    f = open('med-cabinet/static/data/cannabis.json', 'r')
+    f = open('./static/data/cannabis.json', 'r')
     cannabis = json.load(f)
 
     f.close()

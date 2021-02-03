@@ -31,6 +31,7 @@ def create_app():
         top_10 = []
         for i in prediction:
             top_10.append(find_index(i))
+        print(top_10)
 
         return render_template('prediction.html', top_10=top_10, values=values)
 

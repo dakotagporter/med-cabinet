@@ -20,7 +20,9 @@
         <div style="padding: 3em 1em;">
             <h3>Search Results for '{{ search }}':</h3>
             {% for value in top_10 %}
-                <p>{{ value }}</p>
+                {% for i in value %}
+                    <p>{{ i }}</p>
+                {% endfor %}
             {% endfor %}
             {% for value in values %}
                 <p>{{ value }}</p>
