@@ -1,17 +1,24 @@
-import dill
 import pickle
-# import spacy
-# from sklearn.feature_extraction.text import TfidfVectorizer
-# from sklearn.neighbors import NearestNeighbors
+import spacy
+
+nlp = spacy.load("en_core_web_md")
 
 
-def processor(doc):
+def preprocessor(doc):
+    """Preprocess input text data using spaCy functionality.
+
+    Args:
+        doc (list): List of input data to be processed
+    Returns:
+        new_text (str): New processed document
+    """
     doc = nlp(doc)
+    new_text = " ".join([token.lemma_.lower() for token in doc if not
+                         token.is_stop and not token.is_punct])
 
-    return " ".join([token.lemma_.lower() for token in doc if not token.is_stop and not token.is_punct])
+    return new_text
 
 
- 
 vectorizer = pickle.load(open('vectorizer.pkl', 'rb'))
 model = pickle.load(open('model.pkl', 'rb'))
 
@@ -37,6 +44,7 @@ def predict(text):
     Returns:
         indices (list): List most to least similar documents to input data
     """
+    text = preprocessor(text)
     vect = vectorize([text])
     _, indices = model.kneighbors(vect)
 

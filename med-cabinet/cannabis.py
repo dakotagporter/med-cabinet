@@ -1,9 +1,9 @@
 import json
 
 
-EFFECTS = ['Creative', 'Energetic', 'Euphoric', 
-           'Focused', 'Giggly', 'Happy', 
-           'Hungry', 'Relaxed', 'Sleepy', 
+EFFECTS = ['Creative', 'Energetic', 'Euphoric',
+           'Focused', 'Giggly', 'Happy',
+           'Hungry', 'Relaxed', 'Sleepy',
            'Talkative', 'Tingly', 'Uplifted']
 
 ERROR = """Error: Strain Not Found.
@@ -12,10 +12,9 @@ ERROR = """Error: Strain Not Found.
 KEYS = ['Strain', 'Type', 'Rating', 'Effects', 'Flavor', 'Description']
 
 
-
 def load_json():
     """Loads .json file into backend"""
-    f = open('./static/data/cannabis.json', 'r')
+    f = open('med-cabinet/static/data/cannabis.json', 'r')
     cannabis = json.load(f)
 
     f.close()
@@ -27,7 +26,7 @@ def search_strains(strain):
     """Search strains by name"""
     cannabis = load_json()
     strain = transfrom_query(strain)
-    
+
     index = 0
     for i in cannabis:
         for key, value in i.items():
@@ -36,6 +35,7 @@ def search_strains(strain):
         index += 1
 
     return ERROR
+
 
 def find_index(index):
     cannabis = load_json()
@@ -48,16 +48,18 @@ def find_effects(effects, strain_type):
 
     strains = []
     for i in cannabis:
-        if all(elem in i['Effects'] for elem in effects) and strain_type == i['Type']:
+        if (all(elem in i['Effects'] for elem in effects) and
+                strain_type == i['Type']):
             strains.append(i)
-    
+
     return strains
+
 
 def parse_json(json):
     values = []
     for elem in json:
         values.append(parse_values(elem))
-    
+
     return values
 
 
@@ -75,14 +77,13 @@ def transfrom_query(query):
 
 
 def parse_values(dic):
-    """Parse values from dictianry 
+    """Parse values from dictianry
        returned by 'search_strains()'"""
     if dic == ERROR:
         return ERROR
-    
+
     values = []
     for key in KEYS:
         values.append(dic[key])
 
     return values
-

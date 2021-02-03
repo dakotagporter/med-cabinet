@@ -1,7 +1,7 @@
 """Main app/routing for med-cabinet"""
 from flask import Flask, render_template, request
 from .cannabis import *
-# from .predict import predict
+from .predict import predict
 
 
 def create_app():
@@ -20,14 +20,14 @@ def create_app():
 
         values = parse_json(strains)
 
-        # description = request.form.get('description')
-        # prediction = predict(description)
+        description = request.form.get('description')
+        prediction = predict(description)
 
-        # top_10 = []
-        # for i in prediction:
-        #     top_10.append(find_index(i))
+        top_10 = []
+        for i in prediction:
+            top_10.append(find_index(i))
 
-        return render_template('prediction.html', values=values)
+        return render_template('prediction.html', top_10=top_10, values=values)
 
     @app.route('/results', methods=['POST'])
     def results():
