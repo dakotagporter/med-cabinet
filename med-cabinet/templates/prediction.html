@@ -17,9 +17,12 @@
                 <a href="/about" class="button normal">About</a>
               </div>
         </nav>
-        <div>
-            {% for i in top_10 %}
-                <p>{{ i }}</p>
+        <div style="padding: 3em 1em;">
+            <h3>Prediction:</h3>
+            {% for value in values %}
+                {%  for elem in value %}
+                    <p>{{ elem }}</p>
+                    {% endfor %}
             {% endfor %}
         </div>
     </body>
