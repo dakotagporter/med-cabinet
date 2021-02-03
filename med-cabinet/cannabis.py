@@ -9,7 +9,8 @@ EFFECTS = ['Creative', 'Energetic', 'Euphoric',
 ERROR = """Error: Strain Not Found.
            Please Try Again!"""
 
-VALUES = []
+KEYS = ['Strain', 'Type', 'Rating', 'Effects', 'Flavor', 'Description']
+
 
 
 def load_json():
@@ -42,6 +43,24 @@ def find_index(index):
     return parse_values(cannabis[index])
 
 
+def find_effects(effects, strain_type):
+    cannabis = load_json()
+
+    strains = []
+    for i in cannabis:
+        if all(elem in i['Effects'] for elem in effects) and strain_type == i['Type']:
+            strains.append(i)
+    
+    return strains
+
+def parse_json(json):
+    values = []
+    for elem in json:
+        values.append(parse_values(elem))
+    
+    return values
+
+
 def transfrom_query(query):
     """Transform user query into correct format
        i.e. 'blue dream' -> 'Blue-Dream'"""
@@ -61,9 +80,8 @@ def parse_values(dic):
     if dic == ERROR:
         return ERROR
     
-    keys = ['Strain', 'Type', 'Rating', 'Effects', 'Flavor', 'Description']
     values = []
-    for key in keys:
+    for key in KEYS:
         values.append(dic[key])
 
     return values
