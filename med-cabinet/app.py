@@ -19,13 +19,13 @@ def create_app():
         strain_type = request.form.get('type')
         # Retrieve description (if applicable)
         description = request.form.get('description')
-
+        
+        prediction = predict(description)
         # Search strains based on user's chosen effects and strain type
-        strains = find_effects(effects, strain_type)
+        strains = query_results(effects, strain_type, prediction)
         # Parse each strain to retrieve it's properties
         values = parse_json(strains)
         # Return indices of recommended strains based on user description
-        prediction = predict(description)
 
         # Retrieve strains based on index location
         top_10 = []
