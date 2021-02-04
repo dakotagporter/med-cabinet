@@ -25,7 +25,7 @@ def load_json():
 def search_strains(strain):
     """Search strains by name"""
     cannabis = load_json()
-    strain = transfrom_query(strain)
+    strain = transform_query(strain)
 
     index = 0
     for i in cannabis:
@@ -37,36 +37,33 @@ def search_strains(strain):
     return ERROR
 
 
-def find_index(index):
-    cannabis = load_json()
-
-    return parse_values(cannabis[index])
-
-
 def query_results(effects, strain_type, prediction):
     cannabis = load_json()
     strains = []
-
-    # if (any(elem in i['Effects'] for elem in effects))
-
-    if strain_type:
-        for i in cannabis:
-            if i['Type'] == strain_type:
-                strains.append(i)
-    
-    if effects:
-        for i in cannabis:
-            if (any(elem in i['Effects'] for elem in effects)):
-                strains.append(i)
+    filtered = []
 
     if prediction:
         for i in prediction:
-            
+            strains.append(cannabis[i])
+        
+        for strain in strains:
+            if any([effect in strain['Effects'] for effect in effects]):
+                if strain_type and (strain_type != strain['Type']):
+                    pass
+                else:
+                    filtered.append(strain)
+    else:
+        print('no pred')
+        for strain in cannabis:
+            if (any(elem in strain['Effects'] for elem in effects)):
+                if strain_type and (strain_type != strain['Type']):
+                    pass
+                else:
+                    filtered.append(strain)
+        
+    return filtered
 
     
-            
-
-
 def parse_json(json):
     values = []
     for elem in json:
@@ -75,7 +72,7 @@ def parse_json(json):
     return values
 
 
-def transfrom_query(query):
+def transform_query(query):
     """Transform user query into correct format
        i.e. 'blue dream' -> 'Blue-Dream'"""
     query = query.title().split()

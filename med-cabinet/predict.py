@@ -46,6 +46,9 @@ def predict(text):
     Returns:
         indices (list): List most to least similar documents to input data
     """
+    # if text:
+    #     return None
+
     text = preprocessor(text)
     vect = vectorize([text])
     _, indices = model.kneighbors(vect)

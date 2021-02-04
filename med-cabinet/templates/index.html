@@ -38,6 +38,15 @@
             </div>
             <div>
             <form action="/prediction" method="POST">
+                <div class="box" style="width:66.6%; margin:auto;">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <div class="notification is-danger">
+                        {{ messages[0] }}.
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                </div>
                 <h2>Effects</h2>
                 <label for="effects">Choose Effects:</label><br>
                 {% for effect in effects %}

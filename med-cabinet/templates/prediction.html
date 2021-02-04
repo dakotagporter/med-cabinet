@@ -21,14 +21,17 @@
             <h3>Prediction:</h3>
             {% for value in top_10 %}
                 {% for i in value %}
-                    <p>{{ i }}</p>
+                    <p>{{ value[i] }}</p>
                 {% endfor %}
             {% endfor %}
-            {% for value in values %}
-                {%  for elem in value %}
-                    <p>{{ elem }}</p>
-                    {% endfor %}
-            {% endfor %}
         </div>
+        {% if search %}
+            <div style="padding: 3em 1em;">
+                <h3>Search Results for '{{ search }}':</h3>
+                {% for value in values %}
+                    <p>{{ value }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
     </body>
 </html>
