@@ -24,7 +24,8 @@ def create_app():
             effects = request.form.getlist('effects')
             if not effects:
                 flash('Please choose at least one effect')
-                return redirect(url_for('/'))
+                return render_template('index.html', effects=EFFECTS,
+                                       error=True)
             strain_type = request.form.get('type')
             # Retrieve description (if applicable)
             description = request.form.get('description')
@@ -36,7 +37,7 @@ def create_app():
             else:
                 strains = query_results(effects, strain_type, None)
             # Parse each strain to retrieve it's properties
-        
+
 
         return render_template('prediction.html', top_10=strains, search=search)
 
