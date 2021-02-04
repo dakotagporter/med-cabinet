@@ -19,6 +19,7 @@ def create_app():
     @app.route('/results', methods=['POST'])
     def results_post():
         if request.method == 'POST':
+            error = None
             # Retrieve user input
             effects = request.form.getlist('effects')
             # Retrieve user search input
@@ -27,8 +28,12 @@ def create_app():
             if search:
                 # Search strains based on input
                 values = search_strains(search)
-
-                return render_template('results.html', values=values, search=search)
+                
+                if values == ERROR:
+                    values = ''
+                    error = ERROR
+                
+                return render_template('results.html', values=values, search=search, error=error)
 
             if not effects:
                 flash('Please choose at least one effect')
