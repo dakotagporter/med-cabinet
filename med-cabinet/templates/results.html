@@ -6,7 +6,7 @@
         <style>
         .grid-container {
           display: grid;
-          }
+        }
         </style>
     </head>
     <body>
@@ -22,7 +22,16 @@
                 <a href="/about" class="button normal">About</a>
               </div>
         </nav>
-        <div style="padding: 3em 1em;">
+        <div class="grid-container">
+          {% for value in strains %}
+          <div class="grid-item">
+            {% for i in value %}
+              <p>{{ i }}</p>
+            {% endfor %}
+          </div>
+          {% endfor %}          
+        </div>
+        <!---<div style="padding: 3em 1em;">
             <h3>Prediction:</h3>
             {% for value in strains %}
                 {% for i in value %}
@@ -38,6 +47,6 @@
             {% if error %}
                 <p>{{ error }}</p>
             {% endif %}
-        </div>
+        </div>--->
     </body>
 </html>
