@@ -2,8 +2,8 @@ import json
 import pickle
 
 
-# EFFECTS = pickle.load(open('./static/data/effects_list.pkl', 'rb'))
-EFFECTS = pickle.load(open('med-cabinet/static/data/effects_list.pkl', 'rb'))
+EFFECTS = pickle.load(open('./static/data/effects_list.pkl', 'rb'))
+# EFFECTS = pickle.load(open('med-cabinet/static/data/effects_list.pkl', 'rb'))
 
 ERROR = """Error: Strain Not Found.
            Please Try Again!"""
@@ -13,8 +13,8 @@ KEYS = ['Strain', 'Type', 'Rating', 'Effects', 'Flavor', 'Description']
 
 def load_json():
     """Loads .json file into backend"""
-    # f = open('./static/data/cannabis.json', 'r')
-    f = open('med-cabinet/static/data/cannabis.json', 'r')
+    f = open('./static/data/cannabis.json', 'r')
+    # f = open('med-cabinet/static/data/cannabis.json', 'r')
     cannabis = json.load(f)
 
     f.close()
@@ -40,30 +40,6 @@ def search_strains(strain):
 def query_results(effects, strain_type, prediction):
     cannabis = load_json()
     strains = []
-<<<<<<< HEAD
-
-    # if (any(elem in i['Effects'] for elem in effects))
-
-    if strain_type:
-        for i in cannabis:
-            if i['Type'] == strain_type:
-                strains.append(i)
-
-    if effects:
-        for i in cannabis:
-            if (any(elem in i['Effects'] for elem in effects)):
-                strains.append(i)
-
-    if prediction:
-        for i in prediction:
-            pass
-
-
-
-
-
-
-=======
     filtered = []
 
     if prediction:
@@ -88,7 +64,6 @@ def query_results(effects, strain_type, prediction):
     return filtered
 
     
->>>>>>> 482a1fa7db5ad9c7a3783549d37c0d021067d3ae
 def parse_json(json):
     values = []
     for elem in json:
