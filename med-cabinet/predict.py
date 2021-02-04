@@ -19,10 +19,10 @@ def preprocessor(doc):
     return new_text
 
 
-vectorizer = pickle.load(open('../vectorizer.pkl', 'rb'))
-model = pickle.load(open('../model.pkl', 'rb'))
-# vectorizer = pickle.load(open('vectorizer.pkl', 'rb'))
-# model = pickle.load(open('model.pkl', 'rb'))
+# vectorizer = pickle.load(open('../vectorizer.pkl', 'rb'))
+# model = pickle.load(open('../model.pkl', 'rb'))
+vectorizer = pickle.load(open('vectorizer.pkl', 'rb'))
+model = pickle.load(open('model.pkl', 'rb'))
 
 
 def vectorize(text):
