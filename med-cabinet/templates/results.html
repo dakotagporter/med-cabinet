@@ -22,31 +22,27 @@
                 <a href="/about" class="button normal">About</a>
               </div>
         </nav>
-        <div class="grid-container">
-          {% for value in strains %}
-          <div class="grid-item">
-            {% for i in value %}
-              <p>{{ i }}</p>
-            {% endfor %}
+        <h3>Prediction:</h3>
+          <div style="padding: 3em 1em;">
+              {% for value in strains %}
+              <div class="box" style="width:33%; margin:auto; background-color:#F1F7EE;">
+                  {% for i in value %}
+                      <p>{{ i }}</p>
+                  {% endfor %}
+              </div>
+              {% endfor %}
+              {% if search %}
+                  <h3>Search Results for '{{ search }}':</h3>
+                  <div class="box" style="width:33%; margin:auto; background-color:#F1F7EE;">
+                  {% for value in values %}
+                      <p>{{ value }}</p>
+                  {% endfor %}
+                  </div>
+              {% endif %}
+              {% if error %}
+                  <p>{{ error }}</p>
+              {% endif %}
           </div>
-          {% endfor %}          
         </div>
-        <!---<div style="padding: 3em 1em;">
-            <h3>Prediction:</h3>
-            {% for value in strains %}
-                {% for i in value %}
-                    <p>{{ i }}</p>
-                {% endfor %}
-            {% endfor %}
-            {% if search %}
-                <h3>Search Results for '{{ search }}':</h3>
-                {% for value in values %}
-                    <p>{{ value }}</p>
-                {% endfor %}
-            {% endif %}
-            {% if error %}
-                <p>{{ error }}</p>
-            {% endif %}
-        </div>--->
     </body>
 </html>
