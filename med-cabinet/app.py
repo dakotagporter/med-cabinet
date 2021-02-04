@@ -1,39 +1,44 @@
 """Main app/routing for med-cabinet"""
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect, flash
 from .cannabis import *
 from .predict import predict
 
 
 def create_app():
     app = Flask(__name__)
+    app.config['SECRET_KEY'] = 'secret-key-goes-here'
 
     @app.route('/')
     def index():
         return render_template('index.html', effects=EFFECTS)
 
-    @app.route('/prediction', methods=['POST'])
+    @app.route('/prediction')
     def prediction():
-        # Retrieve user input
-        # TODO: Return error if effects or strain type is not provided
-        effects = request.form.getlist('effects')
-        strain_type = request.form.get('type')
-        # Retrieve description (if applicable)
-        description = request.form.get('description')
+        return render_template('prediction.html')
+
+    @app.route('/prediction', methods=['POST'])
+    def prediction_post():
+        if request.method == 'POST':
+            # Retrieve user input
+            # TODO: Return error if effects or strain type is not provided
+            effects = request.form.getlist('effects')
+            if not effects:
+                flash('Please choose at least one effect')
+                return redirect(url_for('/'))
+            strain_type = request.form.get('type')
+            # Retrieve description (if applicable)
+            description = request.form.get('description')
+            if not description == '':
+                # Return indices of recommended strains based on user description
+                prediction = predict(description)
+            # Search strains based on user's chosen effects and strain type
+                strains = query_results(effects, strain_type, prediction)
+            else:
+                strains = query_results(effects, strain_type, None)
+            # Parse each strain to retrieve it's properties
         
-        prediction = predict(description)
-        # Search strains based on user's chosen effects and strain type
-        strains = query_results(effects, strain_type, prediction)
-        # Parse each strain to retrieve it's properties
-        values = parse_json(strains)
-        # Return indices of recommended strains based on user description
 
-        # Retrieve strains based on index location
-        top_10 = []
-        for i in prediction:
-            top_10.append(find_index(i))
-        print(top_10)
-
-        return render_template('prediction.html', top_10=top_10, values=values)
+        return render_template('prediction.html', top_10=strains, search=search)
 
     @app.route('/results', methods=['POST'])
     def results():
@@ -42,7 +47,7 @@ def create_app():
         # Search strains based on input
         values = search_strains(search)
 
-        return render_template('results.html', values=values, search=search)
+        return render_template('results.html', values=values, )
 
     @app.route('/search')
     def search():
