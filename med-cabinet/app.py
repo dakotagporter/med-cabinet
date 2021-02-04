@@ -20,7 +20,6 @@ def create_app():
     def results_post():
         if request.method == 'POST':
             # Retrieve user input
-            # TODO: Return error if effects or strain type is not provided
             effects = request.form.getlist('effects')
             # Retrieve user search input
             search = request.form.get('search')
@@ -41,11 +40,10 @@ def create_app():
             if not description == '':
                 # Return indices of recommended strains based on user description
                 prediction = predict(description)
-            # Search strains based on user's chosen effects and strain type
+                # Search strains based on user's chosen effects and strain type
                 strains = query_results(effects, strain_type, prediction)
             else:
                 strains = query_results(effects, strain_type, None)
-            # Parse each strain to retrieve it's properties
 
 
         return render_template('results.html', strains=strains)
