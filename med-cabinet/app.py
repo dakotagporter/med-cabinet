@@ -12,16 +12,25 @@ def create_app():
     def index():
         return render_template('index.html', effects=EFFECTS)
 
-    @app.route('/prediction')
-    def prediction():
-        return render_template('prediction.html')
+    @app.route('/results')
+    def results():
+        return render_template('results.html')
 
-    @app.route('/prediction', methods=['POST'])
-    def prediction_post():
+    @app.route('/results', methods=['POST'])
+    def results_post():
         if request.method == 'POST':
             # Retrieve user input
             # TODO: Return error if effects or strain type is not provided
             effects = request.form.getlist('effects')
+            # Retrieve user search input
+            search = request.form.get('search')
+
+            if search:
+                # Search strains based on input
+                values = search_strains(search)
+
+                return render_template('results.html', values=values, search=search)
+
             if not effects:
                 flash('Please choose at least one effect')
                 return render_template('index.html', effects=EFFECTS,
@@ -39,16 +48,7 @@ def create_app():
             # Parse each strain to retrieve it's properties
 
 
-        return render_template('prediction.html', top_10=strains, search=search)
-
-    @app.route('/results', methods=['POST'])
-    def results():
-        # Retrieve user search input
-        search = request.form.get('search')
-        # Search strains based on input
-        values = search_strains(search)
-
-        return render_template('results.html', values=values, )
+        return render_template('results.html', strains=strains)
 
     @app.route('/search')
     def search():

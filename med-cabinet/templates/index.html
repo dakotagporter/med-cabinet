@@ -21,23 +21,21 @@
             <div>
                 <h2>Instructions</h2>
                 <p>
-                    Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit
-                    in voluptate velit esse cillum dolore
-                    eu fugiat nulla pariatur.
+                    Tired of the side effects from your medication? 
+                    Are you ready to try something different? 
+                    Introducing MedCabinet, the personalized cannabis 
+                    recommendation app! Harness the power of 
+                    AI to take the guess work out of your strain 
+                    selection. Simply enter at least one desired effect, 
+                    optionally enter a type, or brief  description and 
+                    let our model do the rest!
                 </p>
                 <div style="text-align: left">
                     <img src="static/images/rx.jpeg" alt="RX Bottle" width="300" height="300">
                 </div>
             </div>
             <div>
-            <form action="/prediction" method="POST">
+            <form action="/results" method="POST">
                 {% if error %}
                 <div class="box" style="width:66.6%; margin:auto;">
                     {% with messages = get_flashed_messages() %}
