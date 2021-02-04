@@ -25,15 +25,16 @@
           <div style="padding: 3em 1em;">
             <h3>Results:</h3>
               {% for value in strains %}
-              <div class="box" style="width:50%; margin:auto; background-color:#00DCDCDC; border-style:solid;">
+              <div class="box" style="width:50%; margin:auto; background-color:rgba(240, 240, 240, 0.3); border-style:solid;">
                   {% for i in value %}
                       <p>{{ i }}</p>
                   {% endfor %}
               </div>
+              <br>
               {% endfor %}
               {% if search %}
                   <h3>Search Results for '{{ search }}':</h3>
-                  <div class="box" style="width:50%; margin:auto; background-color:#00DCDCDC; border-style:solid;">
+                  <div class="box" style="width:50%; margin:auto; background-color:rgba(240, 240, 240, 0.3); border-style:solid;">
                   {% for value in values %}
                       <p>{{ value }}</p>
                   {% endfor %}
