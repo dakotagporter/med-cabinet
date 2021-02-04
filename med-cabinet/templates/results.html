@@ -22,10 +22,10 @@
                 <a href="/about" class="button normal">About</a>
               </div>
         </nav>
-        <h3>Prediction:</h3>
           <div style="padding: 3em 1em;">
+            <h3>Prediction:</h3>
               {% for value in strains %}
-              <div class="box" style="width:33%; margin:auto; background-color:#F1F7EE;">
+              <div class="box" style="width:50%; margin:auto; background-color:#DCDCDC;">
                   {% for i in value %}
                       <p>{{ i }}</p>
                   {% endfor %}
@@ -33,7 +33,7 @@
               {% endfor %}
               {% if search %}
                   <h3>Search Results for '{{ search }}':</h3>
-                  <div class="box" style="width:33%; margin:auto; background-color:#F1F7EE;">
+                  <div class="box" style="width:50%; margin:auto; background-color:#F1F7EE;">
                   {% for value in values %}
                       <p>{{ value }}</p>
                   {% endfor %}
