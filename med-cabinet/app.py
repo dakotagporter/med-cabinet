@@ -8,7 +8,7 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'secret-key-goes-here'
 
-    @app.route('/')
+    @app.route('/', methods=['GET'])
     def index():
         return render_template('index.html', effects=EFFECTS)
 
