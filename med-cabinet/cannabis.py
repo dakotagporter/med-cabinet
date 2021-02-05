@@ -13,8 +13,8 @@ KEYS = ['Strain', 'Type', 'Rating', 'Effects', 'Flavor', 'Description']
 
 def load_json():
     """Loads .json file into backend"""
-    f = open('./static/data/cannabis.json', 'r')
-    # f = open('med-cabinet/static/data/cannabis.json', 'r')
+    # f = open('./static/data/cannabis.json', 'r')
+    f = open('med-cabinet/static/data/cannabis.json', 'r')
     cannabis = json.load(f)
 
     f.close()
