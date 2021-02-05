@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+gunicorn = "*"
+numpy = "==1.19.3"
+jinja2 = "*"
+flask = "*"
+flask-sqlalchemy = "*"
+python-dotenv = "*"
+psycopg2-binary = "*"
+jupyter = "*"
+notebook = "*"
+pandas = "*"
+spacy = "*"
+scikit-learn = "*"
+cloudpickle = "*"
+dill = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
