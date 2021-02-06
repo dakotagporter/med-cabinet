@@ -4,6 +4,10 @@ import spacy
 nlp = spacy.load("en_core_web_md")
 
 
+vectorizer = pickle.load(open('vectorizer.pkl', 'rb'))
+model = pickle.load(open('model.pkl', 'rb'))
+
+
 def preprocessor(doc):
     """Preprocess input text data using spaCy functionality.
 
@@ -17,12 +21,6 @@ def preprocessor(doc):
                          token.is_stop and not token.is_punct])
 
     return new_text
-
-
-# vectorizer = pickle.load(open('../vectorizer.pkl', 'rb'))
-# model = pickle.load(open('../model.pkl', 'rb'))
-vectorizer = pickle.load(open('vectorizer.pkl', 'rb'))
-model = pickle.load(open('model.pkl', 'rb'))
 
 
 def vectorize(text):
@@ -46,9 +44,6 @@ def predict(text):
     Returns:
         indices (list): List most to least similar documents to input data
     """
-    # if text:
-    #     return None
-
     text = preprocessor(text)
     vect = vectorize([text])
     _, indices = model.kneighbors(vect)
